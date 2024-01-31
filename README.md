@@ -80,25 +80,39 @@ python repetition/repeat.py --dataset instacart --alpha 0.3 --beta 0.8
 python repetition/repeat.py --dataset dunnhumby --alpha 0.7 --beta 0.9
 
 ```
+repeat results are saved as 'repeat_result/{dataset}_pred.json'
+
 ### Step2: get explore results
 
 ```
 python exploration/ex-fair.py --dataset instacart
 
 ```
+explore results of ex-fair is saved as 'ex-fair_result/{dataset}_pred.json'
+
 ### Step3: generate the final basket
+For TREx-Fair,
 ```
 python basket_generation.py --dataset instacart
+
+```
+The results are saved as 'final_results_fair/{dataset}_pred_{threshold}.json'
+
+For TREx-Div,
+```
 python basket_generation_div.py --dataset instacart
 
 ```
+The results are saved as 'final_results_div/{dataset}_pred_{threshold}.json'
+
+
 ### Step4: evaluate
 ```
 python evaluation/model_performance.py --pred_folder XXX --number_list 0 --method trex-fair --threshold 0.0
 
 ```
 
-
+The evaluation results are saved as 'eval_trex-div/eval_{method_name}_{threshold}.txt'
 
 
 
