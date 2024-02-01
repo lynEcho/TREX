@@ -16,10 +16,10 @@ To run the published NBR methods' code, please go to the original repository and
 We provide the preprocessed dataset with different formats (csvdata, jsondata, mergedata), which can be used directly.
 
 ### Format description of preprocessed dataset
-* csvdata: --> G-TopFreq, P-TopFreq, GP-TopFreq, ReCANet
+* csvdata: --> G-TopFreq, P-TopFreq, GP-TopFreq, ReCANet, TREx
 > user_id, order_number, item_id, basket_id
 
-* jsondata: --> TIFUKNN, DNNTSP, DREAM
+* jsondata: --> TIFUKNN, DNNTSP, DREAM, TREx
 
 > history data: {uid1: [[-1], basket, basket, ..., [-1]], uid2:[[-1], basket, basket, ..., [-1]], ... }
 
@@ -34,17 +34,13 @@ We provide the preprocessed dataset with different formats (csvdata, jsondata, m
 
 > {uid1: [item, item, ..., item], uid2: [item, item, ..., item], ...}
 
-* Predicted relevance scores (for all the items):
-
-> {uid1: [rel, rel, ..., rel], uid2: [rel, rel, ..., rel], ...}
 
 
 
-## TREX
 
-### Code structure
+## Code structure
 
-* csvdata, jsondata: contains the .csv format and .json format dataset after preprocessing, separately.
+* csvdata, jsondata, mergedata: contain different dataset formats.
 * repetition: contains scripts of repetition module.
 * exploration: contains scripts of explore-fair.
 * combine: contains scripts for generating the final basket (trex-fair, trex-div).
@@ -53,9 +49,9 @@ We provide the preprocessed dataset with different formats (csvdata, jsondata, m
     * diversity_metrics.py: the diversity metrics. 
     * metrics.py: the accuracy metrics.
     * model_performance.py: evaluate the fairness, diversity and accuracy of recommendation results.
+* methods: contains other NBR methods.
 
-
-
+## TREX
 
 ### Pipeline
 Step1: get repeat results, which is saved as 'repeat_result/{dataset}_pred.json'
