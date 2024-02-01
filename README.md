@@ -1,6 +1,8 @@
 # Source code for TREx
 This paper proposes TREx framework to reveal the short-cut to beyond-accuracy metrics (fairness, diversity) in next basket recommendation (NBR).
-We additionally reproduce 8 NBR methods and evaluate the performance using 5 fairness metrics, 3 diversity metrics and 3 accuracy metrics.
+We additionally:
+* reproduce 8 NBR methods 
+* evaluate the performance using 5 fairness metrics, 3 diversity metrics and 3 accuracy metrics.
 
 
 ## Required packages
