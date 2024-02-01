@@ -1,5 +1,6 @@
 # Source code for TREx
 This paper proposes TREx framework to reveal the short-cut to beyond-accuracy metrics (fairness, diversity) in next basket recommendation (NBR).
+
 We additionally:
 * reproduce 8 NBR methods 
 * evaluate the performance using 5 fairness metrics, 3 diversity metrics and 3 accuracy metrics.
@@ -38,8 +39,6 @@ We provide the preprocessed dataset with different formats (csvdata, jsondata, m
 
 
 
-
-
 ## Code structure
 
 * csvdata, jsondata, mergedata: contain different dataset formats.
@@ -51,11 +50,10 @@ We provide the preprocessed dataset with different formats (csvdata, jsondata, m
     * diversity_metrics.py: the diversity metrics. 
     * metrics.py: the accuracy metrics.
     * model_performance.py: evaluate the fairness, diversity and accuracy of recommendation results.
-* methods: contains other NBR methods.
+* methods: contains 8 NBR methods.
 
 ## TREX
 
-### Pipeline
 Step1: get repeat results, which is saved as 'repeat_result/{dataset}_pred.json'
 ```
 python repetition/repeat.py --dataset instacart --alpha 0.3 --beta 0.8
@@ -73,7 +71,8 @@ python exploration/ex-fair.py --dataset instacart
 
 
 Step3: generate the final basket
-For TREx-Fair, the results are saved as 'final_results_fair/{dataset}_pred_{threshold}.json'
+
+For TREx-Fair, the results are saved as 'final_results_fair/{dataset}_ pred_{threshold}.json'
 ```
 python basket_generation.py --dataset instacart
 
@@ -84,20 +83,20 @@ For TREx-Div, the following command generates ex-div results and the final baske
 python basket_generation_div.py --dataset instacart
 
 ```
-The results are saved as 'final_results_div/{dataset}_pred_{threshold}.json'
+The results are saved as 'final_results_div/{dataset}_ pred_{threshold}.json'
 
 
 Step4: evaluate
 ```
-python evaluation/model_performance.py --pred_folder XXX --number_list 0 --method trex-fair --threshold XX
+python evaluation/model_performance.py --pred_folder XXX --number_list 0 --method XXX --threshold XX
 
 ```
 
-The evaluation results are saved as 'eval_trex-fair/eval_{method_name}_{threshold}.txt'
+XXX is the folder where you put the predicted results. The evaluation results are saved as 'eval_trex-fair/eval_{method_name}_{threshold}.txt'
 
 
 ## Guidelines for NBR baselines
-Our reproducibility rely as much as possible on the artifacts provided by the user themselves, the following repositories have information about how to run each NBR method and the required packages.
+Our reproducibility relies as much as possible on the artifacts provided by the user themselves, the following repositories have information about how to run each NBR method and the required packages.
 * UP-CF@r: https://github.com/MayloIFERR/RACF
 * TIFUKNN: https://github.com/HaojiHu/TIFUKNN
 * DREAM: https://github.com/yihong-chen/DREAM
@@ -136,8 +135,7 @@ python racf.py --dataset instacart --recency 5 --asymmetry 0.25 --locality 5 --s
 ...
 python racf.py --dataset dunnhumby --recency 25 --asymmetry 0.25 --locality 5 --seed 12345 --number 0
 ...
-python racf.py --dataset tafeng --recency 10 --asymmetry 0.25 --locality 1 --seed 12345 --number 0
-...
+
 ``` 
 Predicted file name: {dataset}_pred{number}.json, {dataset}_rel{number}.json
 
@@ -149,8 +147,7 @@ python tifuknn_new.py ../jsondata/instacart_history.json ../jsondata/instacart_f
 ...
 python tifuknn_new.py ../jsondata/dunnhumby_history.json ../jsondata/dunnhumby_future.json ../keyset/dunnhumby_keyset.json 100 0.9 0.9 0.1 7 20 
 ...
-python tifuknn_new.py ../jsondata/tafeng_history.json ../jsondata/tafeng_future.json ../keyset/tafeng_keyset.json 300 0.9 0.9 0.1 11 20 
-...
+
 ```
 Predicted file name: {dataset}_pred0.json, {dataset}_rel0.json
 
@@ -163,8 +160,7 @@ python trainer.py --dataset instacart --attention 1 --seed 12345
 ...
 python trainer.py --dataset dunnhumby --attention 1 --seed 12345 
 ...
-python trainer.py --dataset tafeng --attention 1 --seed 12345 
-...
+
 ```
 * Step 3: Predict and save the results using the following commands:
 ```
@@ -172,8 +168,7 @@ python pred_results.py --dataset instacart --attention 1 --seed 12345 --number 0
 ...
 python pred_results.py --dataset dunnhumby --attention 1 --seed 12345 --number 0
 ...
-python pred_results.py --dataset tafeng --attention 1 --seed 12345 --number 0
-...
+
 ```
 Predicted file name: {dataset}_pred{number}.json, {dataset}_rel{number}.json
 
@@ -226,8 +221,7 @@ python main.py -dataset instacart -user_embed_size 64 -item_embed_size 16 -hidde
 ...
 python main.py -dataset dunnhumby -user_embed_size 16 -item_embed_size 128 -hidden_size 64 -history_len 35 -number 0 -seed_value 12345 
 ...
-python main.py -dataset tafeng -user_embed_size 64 -item_embed_size 64 -hidden_size 64 -history_len 35 -number 0 -seed_value 12345 
-...
+
 ```
 Predicted file name: {dataset}_pred{number}.json, {dataset}_rel{number}.json
 
