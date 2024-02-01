@@ -1,0 +1,16 @@
+{
+    "data": "TaFeng",
+    "save_model_folder": "DNNTSP",
+    "history_path": "../../jsondata/tafeng_history.json",
+    "future_path": "../../jsondata/tafeng_future.json",
+    "keyset_path": "../../keyset/tafeng_keyset.json",
+    "items_total": 15024,
+    "item_embed_dim": 32,
+    "cuda": 0,
+    "loss_function": "multi_label_soft_loss",
+    "epochs": 40,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "optim": "Adam",
+    "weight_decay": 0
+}
